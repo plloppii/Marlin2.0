@@ -47,6 +47,9 @@
 
 #include "pins_RAMPS.h"
 
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION AZTEEG_X3_PRO
+
 // DIGIPOT slave addresses
 #ifndef DIGIPOT_I2C_ADDRESS_A
   #define DIGIPOT_I2C_ADDRESS_A 0x2C   // unshifted slave address for first DIGIPOT 0x2C (0x58 <- 0x2C << 1)
@@ -178,3 +181,5 @@
   #define SPINDLE_LASER_ENA_PIN    20   // Pin should have a pullup!
   #define SPINDLE_DIR_PIN          21
 #endif
+
+#include CONCAT3(../gigabot/,SYSTEM,.h)

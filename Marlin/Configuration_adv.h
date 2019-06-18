@@ -31,7 +31,14 @@
  * Basic settings can be found in Configuration.h
  *
  */
+#ifndef CONFIGURATION_ADV_H
+#define CONFIGURATION_ADV_H
 #define CONFIGURATION_ADV_H_VERSION 020000
+
+#include "src/gigabot/systems.h"
+
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(TEMPERATURE, 3)
 
 // @section temperature
 
@@ -250,6 +257,10 @@
 
 // @section extruder
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(TEMPERATURE, 4)
+
 // Extruder runout prevention.
 // If the machine is idle and the temperature over MINTEMP
 // then extrude some filament every couple of SECONDS.
@@ -333,6 +344,10 @@
 
 // @section extruder
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(EXTRUDER, 5)
+
 /**
  * Extruder cooling fans
  *
@@ -389,6 +404,10 @@
 //#define ENDSTOPS_ALWAYS_ON_DEFAULT
 
 // @section extras
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(EXTRAS, 3)
 
 //#define Z_LATE_ENABLE // Enable Z the last moment. Needed if your Z driver overheats.
 
@@ -509,6 +528,10 @@
 
 // @section homing
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(HOMING, 4)
+
 // Homing hits each endstop, retracts by these distances, then does a slower bump.
 #define X_HOME_BUMP_MM 5
 #define Y_HOME_BUMP_MM 5
@@ -573,6 +596,10 @@
 
 // @section lcd
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(LCD, 2)
+
 #if EITHER(ULTIPANEL, EXTENSIBLE_UI)
   #define MANUAL_FEEDRATE {50*60, 50*60, 4*60, 60} // Feedrates for manual moves along X, Y, Z, E from panel
 #endif
@@ -583,6 +610,10 @@
 #endif
 
 // @section extras
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(EXTRAS, 4)
 
 // minimum time in microseconds that a movement needs to take if the buffer is emptied.
 #define DEFAULT_MINSEGMENTTIME        20000
@@ -760,6 +791,10 @@
 //===========================================================================
 
 // @section lcd
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION LCD
 
 // Change values more rapidly when the encoder is rotated faster
 #define ENCODER_RATE_MULTIPLIER
@@ -1071,6 +1106,10 @@
 
 // @section lcd
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(LCD, 1)
+
 /**
  * Babystepping enables movement of the axes by tiny increments without changing
  * the current position values. This feature is used primarily to adjust the Z
@@ -1244,6 +1283,10 @@
 
 // @section hidden
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(HIDDEN, 1)
+
 // The number of linear motions that can be in the plan at any give time.
 // THE BLOCK_BUFFER_SIZE NEEDS TO BE A POWER OF 2 (e.g. 8, 16, 32) because shifts and ors are used to do the ring-buffering.
 #if ENABLED(SDSUPPORT)
@@ -1253,6 +1296,10 @@
 #endif
 
 // @section serial
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(SERIAL_BUF, 1)
 
 // The ASCII buffer for serial input
 #define MAX_CMD_SIZE 96
@@ -1307,6 +1354,8 @@
 // Printrun may have trouble receiving long strings all at once.
 // This option inserts short delays between lines of serial output.
 #define SERIAL_OVERRUN_PROTECTION
+
+#include SYSTEM_SETTINGS
 
 // @section extras
 
@@ -2416,3 +2465,5 @@
 
 // Enable Marlin dev mode which adds some special commands
 //#define MARLIN_DEV_MODE
+
+#endif //CONFIGURATION_ADV_H

@@ -1182,8 +1182,11 @@ void Temperature::manage_heater() {
   #endif // HAS_HEATED_CHAMBER
 }
 
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(TEMPERATURE, 5)
+
 #define TEMP_AD595(RAW)  ((RAW) * 5.0 * 100.0 / 1024.0 / (OVERSAMPLENR) * (TEMP_SENSOR_AD595_GAIN) + TEMP_SENSOR_AD595_OFFSET)
-#define TEMP_AD8495(RAW) ((RAW) * 6.6 * 100.0 / 1024.0 / (OVERSAMPLENR) * (TEMP_SENSOR_AD8495_GAIN) + TEMP_SENSOR_AD8495_OFFSET)
+#define TEMP_AD8495(RAW) ((RAW) * 5.0 * 100.0 / 1024.0 / (OVERSAMPLENR) * (TEMP_SENSOR_AD595_GAIN) + TEMP_SENSOR_AD8495_OFFSET)
 
 /**
  * Bisect search for the range of the 'raw' value, then interpolate
@@ -1424,6 +1427,7 @@ float Temperature::analog_to_celsius_hotend(const int raw, const uint8_t e) {
 
   return 0;
 }
+
 
 #if HAS_HEATED_BED
   // Derived from RepRap FiveD extruder::getTemperature()
@@ -3241,3 +3245,5 @@ void Temperature::isr() {
   #endif // HAS_HEATED_CHAMBER
 
 #endif // HAS_TEMP_SENSOR
+
+#include CONCAT3(../gigabot/,SYSTEM,.h)

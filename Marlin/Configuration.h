@@ -36,7 +36,11 @@
  * Advanced settings can be found in Configuration_adv.h
  *
  */
+#ifndef CONFIGURATION_H
+#define CONFIGURATION_H
 #define CONFIGURATION_H_VERSION 020000
+
+#include "src/gigabot/systems.h"
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -68,6 +72,9 @@
 // config/examples/SCARA and customize for your machine.
 //
 
+#undef SYSTEM_SECTION
+#define SYSTEM_SECTION SECTION(INFO)
+
 // @section info
 
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
@@ -94,6 +101,11 @@
 
 // Enable to show the bitmap in Marlin/_Statusscreen.h on the status screen.
 //#define CUSTOM_STATUS_SCREEN_IMAGE
+
+#include SYSTEM_SETTINGS
+
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(MACHINE, 1)
 
 // @section machine
 
@@ -142,6 +154,11 @@
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
 //#define MACHINE_UUID "00000000-0000-0000-0000-000000000000"
+
+#include SYSTEM_SETTINGS
+
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(EXTRUDER, 1)
 
 // @section extruder
 
@@ -298,6 +315,11 @@
 //#define HOTEND_OFFSET_Y {0.0, 5.00}  // (mm) relative Y-offset for each nozzle
 //#define HOTEND_OFFSET_Z {0.0, 0.00}  // (mm) relative Z-offset for each nozzle
 
+#include SYSTEM_SETTINGS
+
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(MACHINE, 2)
+
 // @section machine
 
 /**
@@ -326,6 +348,11 @@
   #endif
 
 #endif
+
+#include SYSTEM_SETTINGS
+
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(TEMPERATURE, 1)
 
 // @section temperature
 
@@ -521,6 +548,11 @@
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
 
+#include SYSTEM_SETTINGS
+
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(EXTRUDER, 2)
+
 // @section extruder
 
 /**
@@ -565,6 +597,10 @@
 //============================= Mechanical Settings =========================
 //===========================================================================
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(MACHINE, 3)
+
 // @section machine
 
 // Uncomment one of these options to enable CoreXY, CoreXZ, or CoreYZ kinematics
@@ -579,6 +615,10 @@
 //===========================================================================
 //============================== Endstop Settings ===========================
 //===========================================================================
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(HOMING, 1)
 
 // @section homing
 
@@ -677,6 +717,11 @@
 //=============================================================================
 //============================== Movement Settings ============================
 //=============================================================================
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(MOTION, 1)
+
 // @section motion
 
 /**
@@ -765,6 +810,11 @@
 //===========================================================================
 //============================= Z Probe Options =============================
 //===========================================================================
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION PROBES
+
 // @section probes
 
 //
@@ -1019,10 +1069,18 @@
 
 // @section extruder
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(EXTRUDER, 3)
+
 #define DISABLE_E false             // For all extruders
 #define DISABLE_INACTIVE_EXTRUDER   // Keep only the active extruder enabled
 
 // @section machine
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(MACHINE, 4)
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR false
@@ -1030,6 +1088,10 @@
 #define INVERT_Z_DIR false
 
 // @section extruder
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(EXTRUDER, 4)
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
 #define INVERT_E0_DIR false
@@ -1040,6 +1102,10 @@
 #define INVERT_E5_DIR false
 
 // @section homing
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(HOMING, 2)
 
 //#define NO_MOTION_BEFORE_HOMING  // Inhibit movement until all axes have been homed
 
@@ -1055,6 +1121,10 @@
 #define Z_HOME_DIR -1
 
 // @section machine
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(MACHINE, 5)
 
 // The size of the print bed
 #define X_BED_SIZE 200
@@ -1133,6 +1203,10 @@
 //=============================== Bed Leveling ==============================
 //===========================================================================
 // @section calibrate
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION CALIBRATE
 
 /**
  * Choose one of the options below to enable G29 Bed Leveling. The parameters
@@ -1321,6 +1395,10 @@
 
 // @section homing
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(HOMING, 3)
+
 // The center of the bed is at (X=0, Y=0)
 //#define BED_CENTER_AT_0_0
 
@@ -1354,6 +1432,10 @@
 #define VALIDATE_HOMING_ENDSTOPS
 
 // @section calibrate
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION CALIBRATE
 
 /**
  * Bed Skew Compensation
@@ -1416,6 +1498,10 @@
 
 // @section extras
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(EXTRAS, 1)
+
 /**
  * EEPROM
  *
@@ -1458,6 +1544,10 @@
 //#define TEMPERATURE_UNITS_SUPPORT
 
 // @section temperature
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(TEMPERATURE, 2)
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
@@ -1588,6 +1678,10 @@
 //=============================================================================
 
 // @section lcd
+
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION LCD
 
 /**
  * LCD LANGUAGE
@@ -2062,6 +2156,11 @@
 
 // @section extras
 
+#include SYSTEM_SETTINGS
+#undef  SYSTEM_SECTION
+#define SYSTEM_SECTION SUBSECTION(EXTRAS, 2)
+
+
 // Increase the FAN PWM frequency. Removes the PWM noise but increases heating in the FET/Arduino
 //#define FAST_PWM_FAN
 
@@ -2190,3 +2289,6 @@
 
 // Allow servo angle to be edited and saved to EEPROM
 //#define EDITABLE_SERVO_ANGLES
+
+#include SYSTEM_SETTINGS
+#endif //CONFIGURATION_H
