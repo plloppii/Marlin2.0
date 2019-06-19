@@ -161,51 +161,51 @@
 //
 #define X_STEP_PIN         STEP1
 #define X_DIR_PIN          DIR1
-#define X_ENABLE_PIN       DRV_EN
+#define X_ENABLE_PIN       -1
 #define X_CS_PIN           M_nCS1
 
 #define Y_STEP_PIN         STEP2
 #define Y_DIR_PIN          DIR2
-#define Y_ENABLE_PIN       DRV_EN
+#define Y_ENABLE_PIN       -1
 #define Y_CS_PIN           M_nCS2
 
 #define Z_STEP_PIN         STEP3
 #define Z_DIR_PIN          DIR3
-#define Z_ENABLE_PIN       DRV_EN
+#define Z_ENABLE_PIN       -1
 #define Z_CS_PIN           M_nCS3
 
 #define E0_STEP_PIN         STEP4
 #define E0_DIR_PIN          DIR4
-#define E0_ENABLE_PIN       DRV_EN
+#define E0_ENABLE_PIN       -1
 #define E0_CS_PIN           M_nCS4
 
 #define E1_STEP_PIN         STEP5
 #define E1_DIR_PIN          DIR5
-#define E1_ENABLE_PIN       DRV_EN
+#define E1_ENABLE_PIN       -1
 #define E1_CS_PIN           M_nCS5
 
 #define E2_STEP_PIN         STEP6
 #define E2_DIR_PIN          DIR6
-#define E2_ENABLE_PIN       DRV_EN
+#define E2_ENABLE_PIN       -1
 #define E2_CS_PIN           M_nCS6
 
 #define E3_STEP_PIN         STEP7
 #define E3_DIR_PIN          DIR7
-#define E3_ENABLE_PIN       DRV_EN
+#define E3_ENABLE_PIN       -1
 #define E3_CS_PIN           M_nCS7
 
 #define E4_STEP_PIN         STEP8
 #define E4_DIR_PIN          DIR8
-#define E4_ENABLE_PIN       DRV_EN
+#define E4_ENABLE_PIN       -1
 #define E4_CS_PIN           M_nCS8
 
 
 // Temperature Sensors
 //
-#define TEMP_0_PIN          THERM_AN1
-#define TEMP_1_PIN          THERM_AN2
+#define TEMP_0_PIN          TC_nCS1
+#define TEMP_1_PIN          TC_nCS2
 #define TEMP_2_PIN          -1
-#define TEMP_BED_PIN        THERM_AN3
+#define TEMP_BED_PIN        TC_nCS3
 #define TEMP_3_PIN          -1
 
 // Heaters / Fans
@@ -235,7 +235,7 @@
 #define SDSS               87
 
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
-  #define FIL_RUNOUT_PIN MAX_ES2
+  #define FIL_RUNOUT_PIN MIN_ES4
   #if NUM_RUNOUT_SENSORS > 1
     #define FIL_RUNOUT2_PIN MAX_ES4
   #endif
