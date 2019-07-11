@@ -127,7 +127,7 @@
   #define X_MIN_PIN          MIN_ES1
   #define X_MAX_PIN          MAX_ES1
   #define Y_MIN_PIN          MIN_ES2
-  #define Y_MAX_PIN          MIN_ES2
+  #define Y_MAX_PIN          MAX_ES2
 #else
   #if X_HOME_DIR == -1
     #define X_MIN_PIN      X_DIAG_PIN
