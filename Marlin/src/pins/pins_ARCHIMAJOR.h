@@ -127,7 +127,7 @@
   #define X_MIN_PIN          MIN_ES1
   #define X_MAX_PIN          MAX_ES1
   #define Y_MIN_PIN          MIN_ES2
-  #define Y_MAX_PIN          MIN_ES2
+  #define Y_MAX_PIN          MAX_ES2
 #else
   #if X_HOME_DIR == -1
     #define X_MIN_PIN      X_DIAG_PIN
@@ -169,30 +169,30 @@
 #define Y_ENABLE_PIN       -1
 #define Y_CS_PIN           M_nCS2
 
-#define Z_STEP_PIN         STEP3
-#define Z_DIR_PIN          DIR3
-#define Z_ENABLE_PIN       -1
-#define Z_CS_PIN           M_nCS3
-
-#define E0_STEP_PIN         STEP4
-#define E0_DIR_PIN          DIR4
-#define E0_ENABLE_PIN       -1
-#define E0_CS_PIN           M_nCS4
-
-#define E1_STEP_PIN         STEP5
-#define E1_DIR_PIN          DIR5
-#define E1_ENABLE_PIN       -1
-#define E1_CS_PIN           M_nCS5
-
-#define E2_STEP_PIN         STEP6
-#define E2_DIR_PIN          DIR6
+#define E2_STEP_PIN         STEP3
+#define E2_DIR_PIN          DIR3
 #define E2_ENABLE_PIN       -1
-#define E2_CS_PIN           M_nCS6
+#define E2_CS_PIN           M_nCS3
 
-#define E3_STEP_PIN         STEP7
-#define E3_DIR_PIN          DIR7
+#define Z_STEP_PIN         STEP4
+#define Z_DIR_PIN          DIR4
+#define Z_ENABLE_PIN       -1
+#define Z_CS_PIN           M_nCS4
+
+#define E3_STEP_PIN         STEP5
+#define E3_DIR_PIN          DIR5
 #define E3_ENABLE_PIN       -1
-#define E3_CS_PIN           M_nCS7
+#define E3_CS_PIN           M_nCS5
+
+#define E0_STEP_PIN         STEP6
+#define E0_DIR_PIN          DIR6
+#define E0_ENABLE_PIN       -1
+#define E0_CS_PIN           M_nCS6
+
+#define E1_STEP_PIN         STEP7
+#define E1_DIR_PIN          DIR7
+#define E1_ENABLE_PIN       -1
+#define E1_CS_PIN           M_nCS7
 
 #define E4_STEP_PIN         STEP8
 #define E4_DIR_PIN          DIR8
