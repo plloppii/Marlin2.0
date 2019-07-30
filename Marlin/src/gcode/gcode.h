@@ -279,6 +279,9 @@
   #include "../feature/I2CPositionEncoder.h"
 #endif
 
+extern void max31856_init();
+extern void max31856_check();
+
 class GcodeSuite {
 public:
 

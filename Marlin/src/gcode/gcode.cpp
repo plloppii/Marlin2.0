@@ -581,6 +581,9 @@ void GcodeSuite::process_parsed_command(
         case 261: M261(); break;                                  // M261: Request data from an i2c slave
       #endif
 
+        case 277: max31856_init(); break;
+        case 278: max31856_check(); break;
+
       #if ENABLED(PREVENT_COLD_EXTRUSION)
         case 302: M302(); break;                                  // M302: Allow cold extrudes (set the minimum extrude temperature)
       #endif

@@ -104,6 +104,27 @@ FORCE_INLINE void _draw_centered_temp(const int16_t temp, const uint8_t tx, cons
   #define SHOW_ON_STATE false
 #endif
 
+#if HAS_HEATED_CHAMBER
+  FORCE_INLINE void _draw_chamber_status(const bool blink) {
+    const float temp = thermalManager.degChamber(),
+                target = thermalManager.degTargetChamber();
+    #if !HEATER_IDLE_HANDLER
+      UNUSED(blink);
+    #endif
+    if (PAGE_UNDER(7)) {
+      #if HEATER_IDLE_HANDLER
+        const bool is_idle = false, // thermalManager.chamber_idle.timed_out,
+                    dodraw = (blink || !is_idle);
+      #else
+        constexpr bool dodraw = true;
+      #endif
+      if (dodraw) _draw_centered_temp(target + 0.5, STATUS_CHAMBER_TEXT_X, 7);
+    }
+    if (PAGE_CONTAINS(28 - INFO_FONT_ASCENT, 28 - 1))
+      _draw_centered_temp(temp + 0.5f, STATUS_CHAMBER_TEXT_X, 28);
+  }
+#endif
+
 FORCE_INLINE void _draw_heater_status(const int8_t heater, const bool blink) {
   #if !HEATER_IDLE_HANDLER
     UNUSED(blink);
@@ -130,27 +151,6 @@ FORCE_INLINE void _draw_heater_status(const int8_t heater, const bool blink) {
   #else
     const float temp = IFBED(thermalManager.degBed(), thermalManager.degHotend(heater)),
                 target = IFBED(thermalManager.degTargetBed(), thermalManager.degTargetHotend(heater));
-  #endif
-
-  #if HAS_HEATED_CHAMBER
-    FORCE_INLINE void _draw_chamber_status(const bool blink) {
-      const float temp = thermalManager.degChamber(),
-                  target = thermalManager.degTargetChamber();
-      #if !HEATER_IDLE_HANDLER
-        UNUSED(blink);
-      #endif
-      if (PAGE_UNDER(7)) {
-        #if HEATER_IDLE_HANDLER
-          const bool is_idle = false, // thermalManager.chamber_idle.timed_out,
-                     dodraw = (blink || !is_idle);
-        #else
-          constexpr bool dodraw = true;
-        #endif
-        if (dodraw) _draw_centered_temp(target + 0.5, STATUS_CHAMBER_TEXT_X, 7);
-      }
-      if (PAGE_CONTAINS(28 - INFO_FONT_ASCENT, 28 - 1))
-        _draw_centered_temp(temp + 0.5f, STATUS_CHAMBER_TEXT_X, 28);
-    }
   #endif
 
   #if DISABLED(STATUS_HOTEND_ANIM)

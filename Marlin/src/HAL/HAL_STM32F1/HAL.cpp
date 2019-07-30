@@ -283,10 +283,10 @@ void HAL_adc_start_conversion(const uint8_t adc_pin) {
     #if HAS_TEMP_ADC_0
       case TEMP_0_PIN: pin_index = TEMP_0; break;
     #endif
-    #if HAS_HEATED_BED
+    #if HAS_TEMP_ADC_BED
       case TEMP_BED_PIN: pin_index = TEMP_BED; break;
     #endif
-    #if HAS_HEATED_CHAMBER
+    #if HAS_TEMP_ADC_CHAMBER
       case TEMP_CHAMBER_PIN: pin_index = TEMP_CHAMBER; break;
     #endif
     #if HAS_TEMP_ADC_1
