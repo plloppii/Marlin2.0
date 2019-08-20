@@ -426,7 +426,7 @@
 
 #define Y_DUAL_STEPPER_DRIVERS
 #if ENABLED(Y_DUAL_STEPPER_DRIVERS)
-  #define INVERT_Y2_VS_Y_DIR true   // Set 'true' if Y motors should rotate in opposite directions
+  #define INVERT_Y2_VS_Y_DIR false   // Set 'true' if Y motors should rotate in opposite directions
   #define Y_DUAL_ENDSTOPS
   #if ENABLED(Y_DUAL_ENDSTOPS)
     #define Y2_USE_ENDSTOP _YMIN_
@@ -1550,8 +1550,8 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT     800  // (mA) RMS current. Multiply by 1.414 for peak current.
-    #define X_MICROSTEPS   16  // 0..256
+    #define X_CURRENT     1750  // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_MICROSTEPS   32  // 0..256
     #define X_RSENSE     0.05//0.11
   #endif
 
@@ -1562,27 +1562,27 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT     800
-    #define Y_MICROSTEPS   16
+    #define Y_CURRENT     1750
+    #define Y_MICROSTEPS   32
     #define Y_RSENSE     0.05//0.11
   #endif
 
   #if AXIS_IS_TMC(Y2)
-    #define Y2_CURRENT    800
-    #define Y2_MICROSTEPS  16
-    #define Y2_RSENSE    0.11
+    #define Y2_CURRENT    1750
+    #define Y2_MICROSTEPS  32
+    #define Y2_RSENSE    0.05//0.11
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT     800
-    #define Z_MICROSTEPS   16
+    #define Z_CURRENT     1680
+    #define Z_MICROSTEPS   32
     #define Z_RSENSE     0.05//0.11
   #endif
 
   #if AXIS_IS_TMC(Z2)
-    #define Z2_CURRENT    800
-    #define Z2_MICROSTEPS  16
-    #define Z2_RSENSE    0.11
+    #define Z2_CURRENT    1680
+    #define Z2_MICROSTEPS  32
+    #define Z2_RSENSE    0.05//0.11
   #endif
 
   #if AXIS_IS_TMC(Z3)
@@ -1592,14 +1592,14 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT    800
-    #define E0_MICROSTEPS  16
+    #define E0_CURRENT    1200
+    #define E0_MICROSTEPS  32
     #define E0_RSENSE    0.05//0.11
   #endif
 
   #if AXIS_IS_TMC(E1)
-    #define E1_CURRENT    800
-    #define E1_MICROSTEPS  16
+    #define E1_CURRENT    1200
+    #define E1_MICROSTEPS  32
     #define E1_RSENSE    0.05//0.11
   #endif
 
